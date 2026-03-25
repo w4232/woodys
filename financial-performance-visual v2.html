@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Performance Management Process - Woody's Landcare</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5f3e 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .process-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            text-align: left;
+        }
+        
+        .blueprint .section-header {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .blueprint .section-header:hover {
+            transform: translateY(-3px);
+        }
+        
+        .blueprint .section-header::after {
+            content: "PROCESS BLUEPRINT";
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            font-size: 11px;
+            font-weight: bold;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 6px 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .blueprint .section-header:hover::after {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .blueprint.data-foundation .section-header {
+            background: linear-gradient(135deg, #5dade2, #3498db);
+            border: 2px solid #3498db;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .blueprint.data-foundation .section-header:hover {
+            background: linear-gradient(135deg, #85c1e9, #5dade2);
+            border-color: #5dade2;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .blueprint.reporting-analysis .section-header {
+            background: linear-gradient(135deg, #5dade2, #3498db);
+            border: 2px solid #3498db;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .blueprint.reporting-analysis .section-header:hover {
+            background: linear-gradient(135deg, #85c1e9, #5dade2);
+            border-color: #5dade2;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .blueprint.strategic-analysis .section-header {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border: 2px solid #e67e22;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        .blueprint.strategic-analysis .section-header:hover {
+            background: linear-gradient(135deg, #f5b041, #f39c12);
+            border-color: #f39c12;
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+        }
+        
+        .blueprint.planning-forecasting .section-header {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border: 2px solid #e67e22;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        .blueprint.planning-forecasting .section-header:hover {
+            background: linear-gradient(135deg, #f5b041, #f39c12);
+            border-color: #f39c12;
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.4);
+        }
+        
+        .blueprint.guidance-recommendations .section-header {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            border: 2px solid #229954;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+        
+        .blueprint.guidance-recommendations .section-header:hover {
+            background: linear-gradient(135deg, #52c882, #27ae60);
+            border-color: #27ae60;
+            box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        .process-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .step-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border: 3px solid #3498db;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .step-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        .step-box::before {
+            content: "QUICK GUIDE";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #3498db;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .step-desc {
+            font-size: 14px;
+            color: #5a6c7d;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .raci {
+            font-size: 12px;
+            color: #7f8c8d;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            line-height: 1.3;
+        }
+        
+        .arrow {
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            border-left: 20px solid #95a5a6;
+            z-index: 5;
+        }
+        
+        .insights-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .insights-section h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        
+        .insights-section ul {
+            color: #5a6c7d;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .step-box {
+                width: 100%;
+            }
+            .arrow {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Financial Performance Management Process - Woody's Landcare</h1>
+        
+        <!-- Blueprint Phase 1: Financial Data Foundation -->
+        <div class="process-section data-foundation blueprint">
+            <div class="section-header">Financial Data Foundation (Tracking & Measurement)</div>
+            <div class="process-flow">
+                <div class="step-box">
+                    <div class="step-title">Bookkeeping & Data Entry</div>
+                    <div class="step-desc">Process daily transactions, code expenses to chart of accounts, record revenue by service line in QuickBooks</div>
+                    <div class="raci">R: Kate Hone / Outsourced Bookkeeper | A: Mike Hone | C: N/A</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Month-End Close & Financial Reporting</div>
+                    <div class="step-desc">Complete journal entries and reconciliations, finalize month-end close, generate P&L, Balance Sheet, and Cash Flow Statement (current: 30+ days, target: 10 days)</div>
+                    <div class="raci">R: Outsourced Bookkeeper / Mike Hone | A: Mike Hone | C: Kate Hone / Tax Accountant</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blueprint Phase 2: Financial Reporting & Analysis -->
+        <div class="process-section reporting-analysis blueprint">
+            <div class="section-header">Financial Reporting & Analysis (Tracking & Measurement)</div>
+            <div class="process-flow">
+                <div class="step-box">
+                    <div class="step-title">KPI Tracking, Scorecards & Dashboard Management</div>
+                    <div class="step-desc">Track bi-weekly labor costs, monthly revenue/margin metrics, annual strategic KPIs in Notion; maintain Google Sheets dashboards showing performance trends</div>
+                    <div class="raci">R: Mike Hone / Kate Hone | A: Mike Hone | C: Jeremiah Huntsavage</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Cash Flow Management</div>
+                    <div class="step-desc">Monitor daily cash position, manage accounts receivable (Net 30), track available credit capacity ($780K), maintain 3+ month seasonal buffer</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Kate Hone</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blueprint Phase 3: Strategic Financial Analysis -->
+        <div class="process-section strategic-analysis blueprint">
+            <div class="section-header">Strategic Financial Analysis (Analysis & Forecasting)</div>
+            <div class="process-flow">
+                <div class="step-box">
+                    <div class="step-title">Monthly Financial Performance Analysis</div>
+                    <div class="step-desc">Calculate gross margin by service line (Maintenance: 45% target, Enhancements: 50% target), compare actual vs. budget, investigate variances (+/- 10%), identify improvement opportunities</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Jeremiah Huntsavage / Kate Hone</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Unit Economics Tracking</div>
+                    <div class="step-desc">Track Customer Acquisition Cost (CAC), Customer Lifetime Value (LTV), calculate LTV:CAC ratio, monitor breakeven revenue (~$183K/month)</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Jeremiah Huntsavage</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Pricing Strategy & Power Assessment</div>
+                    <div class="step-desc">Evaluate current pricing ($40-48/hour) against premium positioning ($55-60/hour), review annual price increase approval rates (80%), assess documented accountability differentiator and market conditions</div>
+                    <div class="raci">R: Mike Hone / Jeremiah Huntsavage | A: Mike Hone | C: Operations Manager</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blueprint Phase 4: Planning & Forecasting -->
+        <div class="process-section planning-forecasting blueprint">
+            <div class="section-header">Planning & Forecasting (Analysis & Forecasting)</div>
+            <div class="process-flow">
+                <div class="step-box">
+                    <div class="step-title">Annual Budget Development</div>
+                    <div class="step-desc">Create annual budget by service line, incorporate growth targets (24% overall, 32.6% enhancements), plan for Spring hiring (8 positions), set margin targets</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Jeremiah Huntsavage / Kate Hone</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Cash Flow Forecasting & Runway Management</div>
+                    <div class="step-desc">Project 13-week rolling cash forecast, account for seasonal fluctuations, calculate months of operating capital available, assess credit capacity utilization and funding needs</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Kate Hone / Tax Accountant</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Scenario Planning</div>
+                    <div class="step-desc">Model best/worst/likely case scenarios for revenue growth, margin improvement, and major investment decisions (equipment, hiring, expansion)</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Jeremiah Huntsavage</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blueprint Phase 5: Financial Guidance & Recommendations -->
+        <div class="process-section guidance-recommendations blueprint">
+            <div class="section-header">Financial Guidance & Recommendations (Guidance)</div>
+            <div class="process-flow">
+                <div class="step-box">
+                    <div class="step-title">Financial Insights Development</div>
+                    <div class="step-desc">Synthesize analysis into actionable insights on margin opportunities, pricing strategy, cost optimization, and growth investment priorities</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Tax Accountant</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Strategic Recommendations</div>
+                    <div class="step-desc">Develop recommendations for leadership on pricing changes, margin improvement initiatives, capital allocation, and operational efficiency</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Jeremiah Huntsavage</div>
+                    <div class="arrow"></div>
+                </div>
+                
+                <div class="step-box">
+                    <div class="step-title">Financial Decision Support</div>
+                    <div class="step-desc">Provide financial analysis and guidance for strategic decisions (new services, market expansion, equipment purchases, hiring plans)</div>
+                    <div class="raci">R: Mike Hone | A: Mike Hone | C: Jeremiah Huntsavage / Kate Hone</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights-section">
+            <h3>Process Flow Insights:</h3>
+            <ul>
+                <li><strong>Streamlined 13-Step Process:</strong> Consolidated from 18 to 13 steps by combining natural workflows (close + reporting, KPIs + dashboards, margin + variance, pricing strategy + power, cash forecast + runway)</li>
+                <li><strong>Mike's Central Financial Role:</strong> Ultimate accountability for all financial management, analysis, and decision-making with high owner dependency (4.58/5.0 - target: 3.5)</li>
+                <li><strong>Kate's Supporting Function:</strong> Transaction coding, light bookkeeping, KPI tracking support, dashboard updates, administrative assistance</li>
+                <li><strong>Outsourced Expertise:</strong> External bookkeepers handle technical month-end work and reconciliations, tax accountant provides strategic consultation</li>
+                <li><strong>Jeremiah's Operational Input:</strong> Consulted on operational efficiency, margin performance, revenue growth strategy, and pricing decisions</li>
+                <li><strong>Three-Color System:</strong> Blue (Tracking/Measurement), Orange (Analysis/Forecasting), Green (Guidance/Recommendations)</li>
+                <li><strong>Integration Challenge:</strong> QuickBooks → Janmar one-way sync with manual Google Sheets analysis creates 30+ day close cycle (target: 10 days)</li>
+                <li><strong>Strategic Priority:</strong> Reduce owner dependency through automation, accelerate close process, implement real-time dashboards, systematize unit economics</li>
+                <li><strong>Growth Context:</strong> Building infrastructure to support 24% revenue growth ($3.4M to $4.2M) and Spring 2026 expansion (8 new hires)</li>
+                <li><strong>Margin Focus:</strong> Closing 4-point gap (41% to 45% gross margin) through pricing optimization (primary lever: 3% increase = $102K profit) and enhancement ratio improvement (17.5% to 40%)</li>
+                <li><strong>Cadence Alignment:</strong> Bi-weekly labor tracking aligns with payroll, monthly reviews for most metrics, quarterly strategic analysis, annual planning cycle</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
